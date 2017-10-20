@@ -7,13 +7,26 @@ import com.mysql.jdbc.PreparedStatement;
 import br.sceweb.servico.ConfiguraDB;
 import br.sceweb.servico.FabricaDeConexoes;
 
+/**
+ * 
+ * @author Guilherme
+ * @version 1.2
+ */
 public class EmpresaDAO {
 	
 	ConfiguraDB configuraDB;
-	
+	/**
+	 * recebeo banco
+	 * @param db
+	 */
 	public EmpresaDAO (ConfiguraDB db){
 		this.configuraDB = db;
 	}
+	/**
+	 * adiciona uma empresa
+	 * @param empresa
+	 * @return
+	 */
 	
 	public int adiciona(Empresa empresa){
 		PreparedStatement ps;
@@ -43,7 +56,7 @@ public class EmpresaDAO {
 	public int exclui (String cnpj) {
 		java.sql.PreparedStatement ps;
 		int codigoretorno = 0;
-		try (Connection conn = new FabricaDeConexoes().getConnection()) {
+		try (Connection conn = new FabricaDeConexoes(configuraDB).getConnection()) {
 			ps= conn.prepareStatement ("delete from empresa where cnpj = ?");
 			ps.setString(1, cnpj);
 			codigoretorno = ps.executeUpdate();

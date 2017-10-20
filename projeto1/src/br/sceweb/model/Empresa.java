@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
  * Esta classe registra as informações das empresas que estao autorizadas
  * a oferecer estagio para alunos
  * @author professor
- * @version 1.0
+ * @version 1.2
  *
  */
 public class Empresa {
@@ -14,11 +14,19 @@ public class Empresa {
 	String nomeFantasia;
 	String endereco;
 	String telefone;
-
+	
+	/**
+	 * pega o cnpj
+	 * @return
+	 */
 	public String getCnpj() {
 		return cnpj;
 	}
-	
+	/**
+	 * leva o cnpj e valida
+	 * @param cnpj
+	 * @return
+	 */
 	
 	public String setCnpj(String cnpj) {
 		String msg="";
@@ -29,43 +37,81 @@ public class Empresa {
 		}
 		return msg;
 	}
-
+	/**
+	 * pega o nome da empresa
+	 * @return
+	 */
 	public String getNomeDaEmpresa() {
 		return nomeDaEmpresa;
 	}
-
+	/**
+	 * leva o nome da empresa
+	 * @param nomeDaEmpresa
+	 */
 	public void setNomeDaEmpresa(String nomeDaEmpresa) {
 		this.nomeDaEmpresa = nomeDaEmpresa;
 	}
-
+	/**
+	 * pega o nome fantasia
+	 * @return
+	 */
 	public String getNomeFantasia() {
+		if (nomeFantasia !=null) {
+		} else {
+			System.out.println("nome não pode ser vazio");
+		}
 		return nomeFantasia;
 	}
-
+	/**
+	 * leva o nome fantasia
+	 * @param nomeFantasia
+	 */
 	public void setNomeFantasia(String nomeFantasia) {
 		this.nomeFantasia = nomeFantasia;
 	}
-
+	/**
+	 * pega o endereço
+	 * @return
+	 */
 	public String getEndereco() {
 		return endereco;
 	}
-
+	
+	/**
+	 * leva o endereço
+	 * @param endereco
+	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
+	/**
+	 * pega o telefone
+	 * @return
+	 */
 	public String getTelefone() {
+		if (telefone !=null) {
+		} else {
+			System.out.println("telefone não pode ser vazio!");
+		}
 		return telefone;
 	}
-
+	/**
+	 * leva o telefone
+	 * @param telefone
+	 */
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	/*
 	 * valida o cnpj
 	 */
+	/**
+	 * valida o cnpj
+	 * @param cnpj
+	 * @return
+	 */
 	public boolean isValido(String cnpj) {
-		char dig13, dig14; 
+		char dig13=0, dig14=0; 
 		int sm, i, r, num, peso;
 		if (cnpj.equals("00000000000000") || 
 				cnpj.equals("11111111111111") || 
